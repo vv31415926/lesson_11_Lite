@@ -1,6 +1,7 @@
-import numpy as np
 import random
-
+'''
+Карточка
+'''
 class Cards:
     def __init__(self):
         self.lst_card = [  [ [0,0] for x in range(0, 9)] for y in range(0, 3)  ]
@@ -69,9 +70,18 @@ class Cards:
             s.append( sc )
         return s
 
+    def __str__(self):
+        s = f'Карточка. Выпало {self.numOK} бочёнки'
+        return s
+
+    def __eq__(self, other):
+        r = (   self.numOK == other.numOK  )
+        return r
+
+    def __ne__(self, other):
+        r = (   self.numOK != other.numOK  )
+        return r
 
 if __name__ == '__main__':
     c = Cards()
-    card = c.generate()
-    for i in range(3):
-        print( card[i])
+    print( c )

@@ -42,7 +42,7 @@ class Go_game:
         return s
 
     def win_game(self, n_barrel):
-        print( '*'*60)
+        print( '*'*30, self, '*'*30 )
         if n_barrel == 0:
             barrel = ''
         else:
@@ -81,6 +81,7 @@ class Go_game:
         game = True
         n_barrel = 0
         while self.isVictory < 0:
+
             self.win_game( n_barrel )
 
             if self.isVictory >= 0:
@@ -103,4 +104,21 @@ class Go_game:
                 if ok == 0:
                     self.missing.append(n_barrel)
 
+    def __str__(self):
+        s = f'Запуск игры Лото. Игроков:{len(self.gamers)}, в мешке {len(self.bag)} боченков'
+        return s
 
+    def __eq__(self, other):
+        r = (   (len(self.bag) == len(other.bag)) & (len(self.gamers) == len(other.gamers))   )
+        return r
+
+    def __ne__(self, other):
+        r = (   (len(self.bag) != len(other.bag)) | (len(self.gamers) != len(other.gamers))   )
+        return r
+
+if __name__ == '__main__':
+    loto = Go_game([1,2,3,4,5,6,7,8,9,0])
+    loto2 = Go_game([1,2,3])
+    #print( loto )
+    print( loto == loto2 )
+    print(loto != loto2)
