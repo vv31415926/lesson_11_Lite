@@ -104,5 +104,3 @@ class Go_game:
                     self.missing.append(n_barrel)
 
 
-if __name__ == '__main__':
-    loto = Go_game()
